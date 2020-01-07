@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>GroupList</title>
+  <link rel="stylesheet" href="./css/global.css">
+</head>
+
+<body>
+  <ul class="nav">
+    <li><a href="{% url 'giftlist:home' %}">Home</a></li>
+    <li><a href="login.html">Logout</a></li>
+  </ul>
+
+  <h1>Gift List</h1>
+
+  <h2>Group</h2>
+  <ul>
+    {% for member in members %}
+    <li><a href="{% url 'giftlist:membergiftlist' member.member %}">{{member.member}}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h2>Shopping List</h2>
+  <ul>
+    <li><a href="giftlist.html">member 1</a></li>
+    <li><a href="giftlist.html">member 2</a></li>
+  </ul>
+
+</body>
+
+</html>

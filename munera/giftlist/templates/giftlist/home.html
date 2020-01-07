@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+
+<body>
+  <ul class="nav">
+    <li><a href="creategroup.html">Create Group</a></li>
+    <li><a href="{% url 'user:logout' %}">Logout</a></li>
+  </ul>
+  <h1>Gift List</h1>
+
+  <h2>Group List</h2>
+  <form method="Get" action="{% url 'giftlist:groupresults' %}">
+    {% csrf_token %}
+    <input type="text" name="q" placeholder="Search">
+    <span><input type="submit" value="Search"></span>
+  </form>
+
+  <ul>
+    {% for group in groups %}
+    <li><a href="{% url 'giftlist:grouplist' %}">{{group.group}}</a></li>
+    {% endfor %}
+  </ul>
+
+  <button>Create Group</button>
+
+  <h2>Gift List</h2>
+  <form action="{% url 'giftlist:home' %}" method="post">
+    {% csrf_token %}
+    {{add_gift_form}}
+    <input type="submit" value="Add">
+  </form>
+
+  <ul>
+    {%  for gift in gifts %}
+			<li><a href="#">{{gift.name}}</a> <button>X</button></li>
+		{% endfor %}
+  </ul>
+
+</body>
+
+</html>

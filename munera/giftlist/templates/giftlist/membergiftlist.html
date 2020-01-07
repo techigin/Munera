@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>GroupList</title>
+  <link rel="stylesheet" href="./css/global.css">
+</head>
+
+<body>
+  <ul class="nav">
+    <li><a href="{% url 'giftlist:home' %}">Home</a></li>
+    <li><a href="login.html">Logout</a></li>
+  </ul>
+
+  <h1>Gift List</h1>
+
+  <p>This is a {{member}} giftlist!</p>
+
+  <ul>
+    {%  for gift in gifts %}
+			<li><a href="#">{{gift.name}}</a></li>
+		{% endfor %}
+  </ul>
+
+</body>
+
+</html>
